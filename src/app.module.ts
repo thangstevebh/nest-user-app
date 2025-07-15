@@ -3,11 +3,17 @@ import { UserController } from './app.controller';
 import { UserService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // Makes the configuration available globally
+    }),
+
+    // Event Emitter Module are imported here
+    EventEmitterModule.forRoot({
+      global: true,
     }),
 
     MongooseModule.forRootAsync({
